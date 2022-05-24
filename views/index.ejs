@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unit 2 Assessment Prep</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Car Collection</h1>
+    <% if (cars.length === 0) { %>
+      <h2>There are no Cars in your collection yet!</h2>
+    <% } else { %>
+      <section>
+        <% cars.forEach(function(car, idx) { %>
+          <article>
+            <p>Make: <%= car.make %></p>
+            <p>Model: <%= car.model %></p>
+            <p>Full Tank?: <%= car.fullTank ? 'Full' : 'Empty' %></p>
+            <form action="/cars/<%= idx %>" method="POST">
+              <button type="submit">X</button>
+            </form>
+          </article>
+          <hr>
+        <% }) %>
+      </section>  
+    <% } %>
+    <form action="/" method="POST">
+      <label>Make: </label>
+      <input type="text" name="make">
+      <br>
+      <label>Model: </label>
+      <input type="text" name="model">
+      <br>
+      <button type="submit">Add Car</button>
+    </form>
+  </body>
+</html>
